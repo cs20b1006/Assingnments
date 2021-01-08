@@ -1,0 +1,66 @@
+\documentclass[12 pt, letterpaper, twoside]{article}
+
+\title{Assignment 7}
+
+\author{Sharon Kachhi}
+\date{January 2021}
+
+\usepackage{circuitikz}
+
+\begin{document}
+
+\maketitle
+
+\section{Boolean equation}
+\begin{equation}
+    F = \overline{P}Q + \overline{P}S + RQ + R\overline{S}
+\end{equation}
+
+\section{Logic Gate}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+ \draw
+(0,-2)node[nand port](myand4){}
+(0,4)node[nand port](myand1){}
+(0,2)node[nand port](myand2){}
+(0,0)node[nand port](myand3){}
+(-5,2)node[left](P){P}
+(-3,2)node[nand port](mynand1){}
+;
+
+\begin{scope}
+\ctikzset{tripoles/american nand port/height=1.5};
+\draw (2,2) node[american nand port,number inputs=4, anchor=in 1](myor) {};
+\end{scope}
+
+\draw
+%(myand1.in 1) node[anchor=east] {P}
+(myand2.in 2) node[anchor=east] {S}
+(myand2.in 1) node[anchor=east] {R}
+(myand1.in 1) node[anchor=east] {S}
+%(myand3.in 1) node[anchor=east] {P}
+(myand3.in 2) node[anchor=east] {Q}
+(myand4.in 1) node[anchor=east] {Q}
+(myand4.in 2) node[anchor=east] {R}
+(myor.out) node[anchor=west] {F}
+
+(myand1.out)--(myor.in 1)
+(myand2.out)--(myor.in 2)
+(myand3.out)--(myor.in 3)
+(myand4.out)--(myor.in 4)
+(P)--++(0:0.5)node[]{}--(mynand1.in 1)
+(P)--++(0:0.5)node[]{}--(mynand1.in 2)
+(mynand1.out)--(myand1.in 2)
+(mynand1.out)--(myand3.in 1)
+;
+
+\end{circuitikz}
+    \caption{Logic Gate}
+    \label{fig:my_label}
+\end{figure}
+
+
+\end{document}
+
