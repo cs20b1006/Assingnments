@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{karnaugh-map}
+
+% ADD TITLE HERE
+\title{K-map for CBSE 2019 6.D}
+\author{Sharon Kachhi }
+%\date{}
+\begin{document}
+
+\maketitle
+
+\section{Question}
+Reduce the following Boolean expression to its simplest form using K-map:
+\begin{equation}
+  F(P,Q,R,S)\;=\;\sum(0,1,2,3,5,6,7,10,14,15)  
+\end{equation}
+\section{Boolean equation - SOP form}
+\begin{equation}
+F\;=\;\overline{P}Q\;+\;R\overline{S}\;+\;\overline{P}S\;+\;QR
+\end{equation}
+ 
+\section{K-Map} 
+\begin{figure}[h]
+    \centering
+\begin{karnaugh-map}[4][4][1][][]
+    \maxterms{4,8,9,11,12,13}
+    \minterms{0,1,2,3,5,6,7,10,14,15}
+    \implicant{4}{12}
+    \implicant{12}{9}
+    \implicant{9}{11}
+    \draw[color=black, ultra thin] (0, 4) --
+    node [pos=0.7, above right, anchor=south west] {$RS$} 
+    node [pos=0.7, below left, anchor=north east] {$PQ$} 
+    ++(135:1);
+\end{karnaugh-map}
+    \caption{K-map for eq.(2)}
+    \label{fig:my_label}
+\end{figure}
+
+\section{Boolean Equation - POS form}
+We can derive the following POS from the above K-map
+\begin{equation}
+    F\;=\;(\overline{P}\;+\;R)(\overline{Q}\;+R\;+\;S)(\overline{P}\;+\;Q\;+\;\overline{S})
+\end{equation}
+
+\end{document}
